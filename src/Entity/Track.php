@@ -42,8 +42,8 @@ class Track
     #[ORM\JoinColumn(nullable: false)]
     private Artist $artist;
 
-    #[ORM\Column(type: 'integer')]
-    private int $price;
+    #[ORM\Column(type: 'float')]
+    private float $price;
 
     public function getId(): ?int
     {
@@ -158,12 +158,12 @@ class Track
         return $this;
     }
 
-    public function getPrice(): ?int
+    public function getPrice(): ?float
     {
         return $this->price;
     }
 
-    public function setPrice(int $price): self
+    public function setPrice(float $price): self
     {
         $this->price = $price;
 

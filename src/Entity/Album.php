@@ -37,8 +37,8 @@ class Album
     #[ORM\Column(type: 'integer')]
     private int $nbTracks;
 
-    #[ORM\Column(type: 'integer')]
-    private int $duration;
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private ?int $duration;
 
     #[ORM\Column(type: 'datetime', nullable: true)]
     private ?Datetime $releaseAt;
@@ -50,7 +50,7 @@ class Album
     private ?string $lyrics;
 
     #[ORM\ManyToMany(targetEntity: Genre::class, inversedBy: 'albums')]
-    private Genre $genre;
+    private Collection $genre;
 
     #[ORM\OneToMany(mappedBy: 'album', targetEntity: Track::class, orphanRemoval: true)]
     private Collection $tracks;
@@ -59,8 +59,8 @@ class Album
     #[ORM\JoinColumn(nullable: false)]
     private Artist $artist;
 
-    #[ORM\Column(type: 'integer')]
-    private int $price;
+    #[ORM\Column(type: 'float')]
+    private float $price;
 
     public function __construct()
     {
@@ -162,7 +162,7 @@ class Album
         return $this->duration;
     }
 
-    public function setDuration(int $duration): self
+    public function setDuration(?int $duration): self
     {
         $this->duration = $duration;
 
@@ -271,12 +271,12 @@ class Album
         return $this;
     }
 
-    public function getPrice(): ?int
+    public function getPrice(): ?float
     {
         return $this->price;
     }
 
-    public function setPrice(int $price): self
+    public function setPrice(float $price): self
     {
         $this->price = $price;
 
