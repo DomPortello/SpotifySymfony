@@ -1,22 +1,29 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/">Home</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="{{ path('home') }}">Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Exo1</a>
+                    <a class="nav-link active" aria-current="page" href="{{ path('artist') }}">Artists</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Exo2</a>
+                    <a class="nav-link" href="{{ path('genre') }}">Genres</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Exo3</a>
+                    <a class="nav-link" href="{{ path('album') }}">Albums</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link">Exo4</a>
+                    <a class="nav-link" href="{{ path('track') }}">Tracks</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('order') }}">Orders</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('user') }}">Users</a>
                 </li>
             </ul>
         </div>
