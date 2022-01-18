@@ -2,11 +2,15 @@
 
 {% block header_body_position %}
 <div class="d-flex flex-row position-relative">
-    {% block header %}
-        {% include 'partials/_header_admin.html.twig' %}
-    {% endblock %}
-    {% block body %}
-    {% endblock %}
+    <div class="block-header">
+        {% block header %}
+            {% include 'partials/_header_admin.html.twig' %}
+        {% endblock %}
+    </div>
+    <div class="block-body">
+        {% block body %}
+        {% endblock %}
+    </div>
 </div>
 {% endblock %}
 {% block footer %}
