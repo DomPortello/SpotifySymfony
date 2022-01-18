@@ -1,9 +1,25 @@
-.block-header{
+.block-header {
   width: 20%;
   height: 100%;
-  background: red;
+  font-size: 1.5em;
+
+  .adminNavBar {
+    background-color: #048b9a;
+
+    a {
+      color: aliceblue;
+    }
+
+    a:hover {
+      color: #ca1f1f;
+    }
+    
+    .active{
+      color: #ca1f1f!important;
+      background-color: transparent;
+    }
+  }
 }
 
-.block-body{
-  width: 80%;
+.block-body {
 }
