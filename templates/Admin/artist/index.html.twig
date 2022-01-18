@@ -3,4 +3,42 @@
 {% block title %}Hello ArtistController!{% endblock %}
 
 {% block body %}
+    <div class="container">
+        <div class="row gy-3">
+            <div class="col-12">
+                <h1>Tous les artistes</h1>
+            </div>
+            <div class="col-12">
+                <table class="table table-dark table-hover table-striped text-center">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Nom</th>
+                            <th>Albums</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for artist in pagination %}
+                            <tr>
+                                <td>
+                                    <img src="{{ artist.smallPicture }}" alt="Photo de {{ artist.name }}">
+                                </td>
+                                <td>{{ artist.name }}</td>
+                                <td>{{ artist.nbAlbum }}</td>
+                                <td>
+                                    <a href="" class="btn btn-primary">Details</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div class="col-12 d-flex justify-content-center">
+                    <div class="pagination">
+                        {{ knp_pagination_render(pagination) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -19,6 +19,12 @@ class ArtistRepository extends ServiceEntityRepository
         parent::__construct($registry, Artist::class);
     }
 
+    public function findByAlpha()
+    {
+        return $this->createQueryBuilder('a')
+            ->orderBy('a.name', 'ASC');
+    }
+
     // /**
     //  * @return Artist[] Returns an array of Artist objects
     //  */
