@@ -3,18 +3,44 @@
 {% block title %}Hello TrackController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'D:/Travail collège-lycée-fac/Devweb/PHP/SpotifySymfony/src/Controller/TrackController.php'|file_link(0) }}">src/Controller/TrackController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'D:/Travail collège-lycée-fac/Devweb/PHP/SpotifySymfony/templates/track/index.html.twig'|file_link(0) }}">templates/track/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <div class="container">
+        <div class="row gy-3">
+            <div class="col-12">
+                <h1>Toutes les Musiques</h1>
+            </div>
+            <div class="col-12">
+                <table class="table table-dark table-hover table-striped text-center">
+                    <thead>
+                    <tr>
+                        <th>Titre</th>
+                        <th>Duration</th>
+                        <th>Position</th>
+                        <th>Rank</th>
+                        <th>Release</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for track in pagination %}
+                        <tr>
+                            <td>{{ track.title }}</td>
+                            <td>{{ track.duration }}</td>
+                            <td>{{ track.position }}</td>
+                            <td>{{ track.rank }}</td>
+                            <td>{{ track.releaseAt|date('d-m-Y') }}</td>
+                            <td>
+                                <a href="" class="btn btn-primary">Details</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <div class="col-12 d-flex justify-content-center">
+                    <div class="pagination">
+                        {{ knp_pagination_render(pagination) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
