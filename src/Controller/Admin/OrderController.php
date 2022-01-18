@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/order')]
+#[Route('admin/order')]
 class OrderController extends AbstractController
 {
-    #[Route('/', name: 'order')]
+    #[Route('/', name: 'admin_order_index')]
     public function index(): Response
     {
-        return $this->render('order/index.html.twig', [
+        return $this->render('Admin/order/index.html.twig', [
             'controller_name' => 'OrderController',
         ]);
     }
