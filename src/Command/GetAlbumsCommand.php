@@ -79,6 +79,7 @@ class GetAlbumsCommand extends Command
                     ->setXlCover($response['cover_xl'])
                     ->setLabel($response['label'])
                     ->setNbTracks($response['nb_tracks'])
+                    ->setDuration($response['duration'])
                     ->setReleaseAt(new \DateTime($response['release_date']))
                     ->setAvailable($response['available'])
                     ->setPrice(15);

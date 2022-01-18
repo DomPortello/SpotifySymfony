@@ -13,7 +13,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class ArtistController extends AbstractController
 {
 
-
     public function __construct(
         private ArtistRepository $artistRepository,
         private PaginatorInterface $paginator,
@@ -26,7 +25,7 @@ class ArtistController extends AbstractController
     {
         $qb = $this->artistRepository->findByAlpha();
         return $this->render('Admin/artist/index.html.twig', [
-            'pagination' => $this->paginator->paginate($qb, $request->query->getInt('page', 1), 4)
+            'pagination' => $this->paginator->paginate($qb, $request->query->getInt('page', 1), 10)
         ]);
     }
 }

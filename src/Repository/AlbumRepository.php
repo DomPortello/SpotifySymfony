@@ -47,4 +47,9 @@ class AlbumRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function findByAlpha($orderBy = 'a.title', $order = 'ASC')
+    {
+        return $this->createQueryBuilder('a')
+            ->orderBy($orderBy, $order);
+    }
 }

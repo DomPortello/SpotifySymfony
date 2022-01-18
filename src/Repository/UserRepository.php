@@ -64,4 +64,9 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         ;
     }
     */
+    public function findByAlpha($orderBy = 'u.nickName', $order = 'ASC')
+    {
+        return $this->createQueryBuilder('u')
+            ->orderBy($orderBy, $order);
+    }
 }

@@ -47,4 +47,9 @@ class TrackRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function findByAlpha($orderBy = 't.title', $order = 'ASC')
+    {
+        return $this->createQueryBuilder('t')
+            ->orderBy($orderBy, $order);
+    }
 }
