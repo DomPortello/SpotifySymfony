@@ -1,6 +1,48 @@
-<ul>
-    <li>Artistes</li>
-    <li>Genres</li>
-    <li>Albums</li>
-    <li>Tracks</li>
-</ul>
+<div class="container-fluid position-absolute">
+    <div class="row flex-nowrap">
+        <div class="col-auto col-md-2 col-xl-2 col-lg-2 px-sm-2 px-0 adminNavBar">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 min-vh-100">
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                    <li class="nav-item">
+                        <a href="{{ path('admin_home') }}"
+                           class="nav-link align-middle px-0 align-middle {% if app.request.get('_route') == 'admin_home' %}active{% endif %}"><i
+                                    class="fas fa-home me-2"></i><span class="d-none d-sm-inline">Home</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ path('admin_album_index') }}" data-bs-toggle="collapse"
+                           class="nav-link px-0 align-middle {% if app.request.get('_route') == 'admin_album_index' %}active{% endif %}"><i
+                                    class="fas fa-compact-disc me-2"></i><span
+                                    class="d-none d-sm-inline">Album</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ path('admin_artist_index') }}"
+                           class="nav-link px-0 align-middle {% if app.request.get('_route') == 'admin_artist_index' %}active{% endif %}"><i
+                                    class="fas fa-user-ninja me-2"></i><span
+                                    class="d-none d-sm-inline">Artist</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ path('admin_genre_index') }}"
+                           class="nav-link px-0 align-middle {% if app.request.get('_route') == 'admin_genre_index' %}active{% endif %}"><i
+                                    class="fas fa-guitar me-2"></i><span class="d-none d-sm-inline">Genre</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ path('admin_track_index') }}"
+                           class="nav-link px-0 align-middle {% if app.request.get('_route') == 'admin_track_index' %}active{% endif %}"><i
+                                    class="fas fa-music me-2"></i><span class="d-none d-sm-inline">Track</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ path('admin_order_index') }}" data-bs-toggle="collapse"
+                           class="nav-link px-0 align-middle {% if app.request.get('_route') == 'admin_order_index' %}active{% endif %}"><i
+                                    class="fas fa-cash-register me-2"></i><span class="d-none d-sm-inline">Order</span></a>
+                    <li class="nav-item">
+                        <a href="{{ path('admin_user_index') }}"
+                           class="nav-link px-0 align-middle {% if app.request.get('_route') == 'admin_user_index' %}active{% endif %}"><i
+                                    class="fas fa-user me-2"></i><span class="d-none d-sm-inline">User</span></a>
+                    </li>
+                </ul>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
