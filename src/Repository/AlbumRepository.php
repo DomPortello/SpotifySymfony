@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Album;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -17,6 +18,30 @@ class AlbumRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Album::class);
+    }
+
+    public function getAllAlbumsWithRelations(string $order = 'album.releaseAt'): array
+    {
+        return $this->createQueryBuilder('album')
+            ->select('album','artist','genre', 'tracks')
+            ->leftJoin('album.artist', 'artist')
+            ->leftJoin('album.genre', 'genre')
+            ->leftJoin('album.tracks', 'tracks')
+            ->orderBy($order, 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function getQbAll(): QueryBuilder
+    {
+        return $this->createQueryBuilder('album')
+            ->select('album','artist','genre', 'tracks')
+            ->leftJoin('album.artist', 'artist')
+            ->leftJoin('album.genre', 'genre')
+            ->leftJoin('album.tracks', 'tracks')
+            ->orderBy('album.releaseAt', 'DESC');
+//            ->getQuery()
+//            ->getResult();
     }
 
     // /**
