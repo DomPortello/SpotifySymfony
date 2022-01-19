@@ -21,6 +21,7 @@
                     </thead>
                     <tbody>
                     {% for genre in paginationGenres %}
+                        <div>
                         <tr>
                             <td>{{ genre.name }}</td>
                             <td>
@@ -28,6 +29,7 @@
                                 <a href="{{ path('admin_genre_edit', {'id': genre.id}) }}" class="btn btn-primary">Éditer</a>
                             </td>
                         </tr>
+                        </div>
                     {% endfor %}
                     </tbody>
                 </table>
