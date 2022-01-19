@@ -8,6 +8,9 @@
             <div class="col-12">
                 <h1>Les Genres</h1>
             </div>
+            <div>
+                <a href="{{ path('admin_genre_create') }}" class="btn btn-primary">Ajouter un genre</a>
+            </div>
             <div class="col-12">
                 <table class="table table-dark table-hover table-striped">
                     <thead>
@@ -21,7 +24,8 @@
                         <tr>
                             <td>{{ genre.name }}</td>
                             <td>
-                                <a href="{{ path('genre_show', {'id': 'x'}) }}" class="btn btn-primary">Détails</a>
+                                <a href="{{ path('admin_genre_show', {'id': genre.id}) }}" class="btn btn-primary">Détails</a>
+                                <a href="{{ path('admin_genre_edit', {'id': genre.id}) }}" class="btn btn-primary">Éditer</a>
                             </td>
                         </tr>
                     {% endfor %}

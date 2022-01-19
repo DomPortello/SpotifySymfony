@@ -29,17 +29,24 @@ class GenreRepository extends ServiceEntityRepository
             ->orderBy($orderBy, $order);
     }
 
-    public function findWithRelations()
+    /**
+     * @return int|mixed|string|null
+     * @throws NonUniqueResultException
+     */
+    public function findWithRelations($id): ?Genre
     {
         return $this->createQueryBuilder('genre')
             ->select('genre', 'album')
             ->leftJoin('genre.albums', 'albums')
-            ->where('genre.id = :slug')
-            ->setParameter('slug', $slug)
+            ->where('genre.id = :id')
+            ->setParameter('id', $id)
             ->getQuery()
             ->getOneOrNullResult()
             ;
     }
+
+
+
 
     // /**
     //  * @return Genre[] Returns an array of Genre objects
