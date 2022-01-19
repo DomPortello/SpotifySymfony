@@ -1,0 +1,20 @@
+.tableau{
+  border: black 1px solid;
+  border-bottom: none;
+}
+
+.table > :not(:first-child) {
+  border-top: 1px solid currentColor;
+}
+
+thead{
+  background-color: rgba(4, 139, 154, 0.56);
+}
+
+tbody{
+  border: none;
+}
+
+tr:last-child{
+  border-bottom: black 1px solid;
+}
