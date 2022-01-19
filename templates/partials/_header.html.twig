@@ -1,6 +1,5 @@
 <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-        {% dump(app.request.get('_route')) %}
         <a href="{{ path('front_home_index') }}"
            class="navbar-brand {% if app.request.get('_route') == 'front_home_index' %}active{% endif %}"><i
                     class="fas fa-home me-2"></i>Home</a>
