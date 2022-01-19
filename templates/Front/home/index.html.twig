@@ -65,7 +65,7 @@
                 </div>
             {% endfor %}
         </div>
-        <div class="d-flex justify-content-between my-2">
+        <div class="d-flex justify-content-between mt-5">
             <h2 class="mainTitles">{{ 'front.home.artists.title'|trans }}</h2>
             <div>
                 <a class="btn btn-outline-dark"
@@ -92,13 +92,32 @@
                         </div>
                     </div>
                 </div>
-                {# <div class="card-img-overlay"> #}
-                {# <h5 class="card-title">Card title</h5> #}
-                {# <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> #}
-                {# <p class="card-text">Last updated 3 mins ago</p> #}
-                {# </div> #}
             {% endfor %}
         </div>
+
+        <div class="d-flex justify-content-between mt-5">
+            <h2 class="mainTitles">{{ 'front.home.genres.title'|trans }}</h2>
+            <div>
+                <a class="btn btn-outline-dark"
+                   href="{{ path('front_album_index') }}">{{ 'front.home.details'|trans }}</a>
+            </div>
+        </div>
+
+        <div class="row">
+            {% for genre in genres %}
+                <div class="albumCards">
+                    <div class="myCard">
+                        <img src="{{ genre.bigPicture }}" class="card-img" alt="{{ genre.name }}">
+                    </div>
+                    <div class="albumText">
+                        <div class="albumTitle">
+                            {{ genre.name }}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
 
     </div>
 

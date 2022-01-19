@@ -53,7 +53,8 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController',
             'albums' => $paginationAlbum,
             'tracks' => $paginationTracks,
-            'artists' => $paginationArtist
+            'artists' => $paginationArtist,
+            'genres' => $this->genreRepository->findAll()
         ]);
     }
 }

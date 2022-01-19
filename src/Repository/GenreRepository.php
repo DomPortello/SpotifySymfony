@@ -40,6 +40,7 @@ class GenreRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
             ;
     }
+    
 
     // /**
     //  * @return Genre[] Returns an array of Genre objects
