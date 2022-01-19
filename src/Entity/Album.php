@@ -7,6 +7,7 @@ use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: AlbumRepository::class)]
 class Album
@@ -17,36 +18,47 @@ class Album
     private ?int $id;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\NotBlank, Assert\Type('string'), Assert\Length(max: 255)]
     private string $title;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Assert\Type('string'), Assert\Length(max: 255)]
     private ?string $smallCover;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Assert\Type('string'), Assert\Length(max: 255)]
     private ?string $mediumCover;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Assert\Type('string'), Assert\Length(max: 255)]
     private ?string $bigCover;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Assert\Type('string'), Assert\Length(max: 255)]
     private ?string $xlCover;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Assert\Type('string'), Assert\Length(max: 255)]
     private ?string $label;
 
     #[ORM\Column(type: 'integer')]
+    #[Assert\NotBlank, Assert\Positive, Assert\Type('integer')]
     private int $nbTracks;
 
     #[ORM\Column(type: 'integer', nullable: true)]
+    #[Assert\Positive, Assert\Type('integer')]
     private ?int $duration;
 
     #[ORM\Column(type: 'datetime', nullable: true)]
+    #[Assert\DateTime, Assert\Type('datetime')]
     private ?Datetime $releaseAt;
 
     #[ORM\Column(type: 'boolean')]
+    #[Assert\NotBlank, Assert\Type('boolean')]
     private bool $available;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Assert\Type('string'), Assert\Length(max: 255)]
     private ?string $lyrics;
 
     #[ORM\ManyToMany(targetEntity: Genre::class, inversedBy: 'albums')]
@@ -57,9 +69,11 @@ class Album
 
     #[ORM\ManyToOne(targetEntity: Artist::class, inversedBy: 'albums')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Assert\NotBlank]
     private Artist $artist;
 
     #[ORM\Column(type: 'float')]
+    #[Assert\NotBlank, Assert\Positive, Assert\Type('float')]
     private float $price;
 
     public function __construct()
