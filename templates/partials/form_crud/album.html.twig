@@ -5,4 +5,47 @@
     <div class="col-6">
         {{ form_row(form.label) }}
     </div>
+    <div class="col-3">
+        {{ form_row(form.smallCover) }}
+    </div>
+    <div class="col-3">
+        {{ form_row(form.mediumCover) }}
+    </div>
+    <div class="col-3">
+        {{ form_row(form.bigCover) }}
+    </div>
+    <div class="col-3">
+        {{ form_row(form.xlCover) }}
+    </div>
+    <div class="col-2">
+        {{ form_row(form.nbTracks) }}
+    </div>
+    <div class="col-2">
+        {{ form_row(form.duration) }}
+    </div>
+    <div class="col-2">
+        {{ form_row(form.releaseAt) }}
+    </div>
+    <div class="col-2">
+        {{ form_row(form.price) }}
+    </div>
+    <div class="col-2">
+        {{ form_row(form.available) }}
+    </div>
+    <div class="col-6">
+        <div class="mb-2">
+            {{ form_label(form.genre) }}
+            <button class="btn btn-success d-inline rounded-circle ms-3" data-btn-add-id="genre" type="button">+</button>
+        </div>
+        {{ form_widget(form.genre) }}
+    </div>
+    <div class="col-6">
+        <div class="mb-2">
+            {{ form_label(form.artist) }}
+        </div>
+        {{ form_widget(form.artist) }}
+    </div>
+    <div class="col-12">
+        {{ form_row(form.lyrics) }}
+    </div>
 </div>
