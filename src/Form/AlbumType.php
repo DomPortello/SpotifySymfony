@@ -4,6 +4,8 @@ namespace App\Form;
 
 use App\Entity\Album;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -14,16 +16,36 @@ class AlbumType extends AbstractType
     {
         $builder
             ->add('title', TextType::class, [
-
+                'label' => 'Titre',
+                'attr' => [
+                    'placeholder' => 'Titre'
+                ]
             ])
-            ->add('smallCover')
-            ->add('mediumCover')
-            ->add('bigCover')
-            ->add('xlCover')
-            ->add('label')
-            ->add('nbTracks')
-            ->add('duration')
-            ->add('releaseAt')
+            ->add('smallCover', TextType::class, [
+                'label' => 'Cover small'
+            ])
+            ->add('mediumCover', TextType::class, [
+                'label' => 'Cover medium'
+            ])
+            ->add('bigCover', TextType::class, [
+                'label' => 'Cover big'
+            ])
+            ->add('xlCover', TextType::class, [
+                'label' => 'Cover xl'
+            ])
+            ->add('label', TextType::class, [
+                'label' => 'Label'
+            ])
+            ->add('nbTracks', IntegerType::class, [
+                'label' => 'Nombre de musique',
+            ])
+            ->add('duration', IntegerType::class, [
+                'label' => 'Durée',
+            ])
+            ->add('releaseAt', DateType::class, [
+                'label' => 'Sorti le',
+                'widget' => 'single_text'
+            ])
 //            ->add('available')
 //            ->add('lyrics')
 //            ->add('price')
