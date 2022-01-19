@@ -1,0 +1,48 @@
+.pagination {
+  font-size: 1.2em;
+
+  .pagination {
+    .page {
+      margin-right: 4px;
+
+      a {
+        text-decoration: none;
+        color: red;
+      }
+    }
+
+    .current {
+      margin-right: 4px;
+      color: green;
+    }
+
+    .next {
+      margin-right: 4px;
+      a {
+        text-decoration: none;
+        color: red;
+      }
+    }
+
+    .previous {
+      a {
+        text-decoration: none;
+        color: red;
+      }
+    }
+
+    .last {
+      a {
+        text-decoration: none;
+        color: red;
+      }
+    }
+    
+    .first {
+      a {
+        text-decoration: none;
+        color: red;
+      }
+    }
+  }
+}
