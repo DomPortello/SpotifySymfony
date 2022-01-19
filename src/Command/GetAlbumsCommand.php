@@ -96,6 +96,7 @@ class GetAlbumsCommand extends Command
                             ->setBigPicture($responseGenre['picture_big'])
                             ->setXlPicture($responseGenre['picture_xl']);
                         $this->entityManager->persist($genreEntity);
+                        dump($genreEntity->getName());
                     }
 
                     $album->addGenre($genreEntity);
