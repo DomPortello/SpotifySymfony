@@ -1,0 +1,11 @@
+front:
+  home:
+    details: 'Voir tout'
+    albums:
+      title: 'Les albums du moment'
+    tracks:
+      title: 'Les musiques les plus écoutées'
+    genres:
+      title: 'Explorez le genre de votre choix'
+    artists:
+      title: 'Les artistes en vogue'

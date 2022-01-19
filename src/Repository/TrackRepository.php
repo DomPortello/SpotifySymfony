@@ -19,6 +19,18 @@ class TrackRepository extends ServiceEntityRepository
         parent::__construct($registry, Track::class);
     }
 
+    public function getAllTracksWithRelations(string $order = 'track.releaseAt'): array
+    {
+        return $this->createQueryBuilder('track')
+            ->select('album','artist','genre', 'track')
+            ->leftJoin('track.artist', 'artist')
+            ->leftJoin('track.album', 'album')
+            ->join('album.genre', 'genre')
+            ->orderBy($order, 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Track[] Returns an array of Track objects
     //  */
