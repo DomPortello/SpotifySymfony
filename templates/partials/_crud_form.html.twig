@@ -5,7 +5,8 @@
         </div>
         <div class="col-12">
             {{ form_start(form) }}
-            {% include 'partials/form_crud/album.html.twig' %}
+            {% include 'partials/form_crud/' ~ entity ~ '.html.twig' %}
+            <button type="submit" class="btn btn-primary">Valider</button>
             {{ form_end(form) }}
         </div>
     </div>

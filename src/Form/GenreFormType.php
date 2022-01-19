@@ -3,8 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Genre;
-use Doctrine\DBAL\Types\TextType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -41,12 +41,6 @@ class GenreFormType extends AbstractType
                 'label' => 'Url image XL',
                 'attr' => [
                     'placeholder' => 'Url image XL'
-                ]
-            ])
-            ->add('albums', TextType::class, [
-                'label' => "Nom de l'album",
-                'attr' => [
-                    'placeholder' => "Nom de l'album"
                 ]
             ])
         ;
