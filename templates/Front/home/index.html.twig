@@ -3,18 +3,104 @@
 {% block title %}Hello HomeController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <div class="container my-5">
+        <h1 class="my-5">Bienvenue sur Brotify</h1>
+        <div class="d-flex justify-content-between">
+            <h2 class="mainTitles">{{ 'front.home.albums.title'|trans }}</h2>
+            <div>
+                <a class="btn btn-outline-dark"
+                   href="{{ path('front_album_index') }}">{{ 'front.home.details'|trans }}</a>
+            </div>
+        </div>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+        <div class="row">
+            {% for album in albums %}
+                <div class="albumCards">
+                    <div class="myCard">
+                        <img src="{{ album.bigCover }}" class="card-img" alt="{{ album.title }}">
+                    </div>
+                    <div class="albumText">
+                        <div class="albumTitle">
+                            {{ album.title }}
+                        </div>
+                        <div class="albumArtist">
+                            {{ album.artist.name }}
+                        </div>
+                    </div>
+                </div>
+                {# <div class="card-img-overlay"> #}
+                {# <h5 class="card-title">Card title</h5> #}
+                {# <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> #}
+                {# <p class="card-text">Last updated 3 mins ago</p> #}
+                {# </div> #}
+            {% endfor %}
+        </div>
+        <div class="d-flex justify-content-between mt-5">
+            <h2 class="mainTitles">{{ 'front.home.tracks.title'|trans }}</h2>
+            <div>
+                <a class="btn btn-outline-dark"
+                   href="{{ path('front_album_index') }}">{{ 'front.home.details'|trans }}</a>
+            </div>
+        </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'D:/Travail collège-lycée-fac/Devweb/PHP/SpotifySymfony/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'D:/Travail collège-lycée-fac/Devweb/PHP/SpotifySymfony/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
-</div>
+        <div class="row justify-content-center">
+            {% for track in tracks %}
+                <div class="myCol-20">
+                    <div class="trackCards">
+                        <div class="myCardImg">
+                            <img class="img-fluid" src="{{ track.album.mediumCover }}" alt="{{ track.title }}">
+                        </div>
+                        <div class="trackText">
+                            <div class="trackTitle">
+                                {{ track.title }}
+                            </div>
+                            <div class="trackArtist">
+                                {{ track.artist.name }}
+                            </div>
+                            <div class="text-muted">
+                                {{ track.duration|get_duration_in_minutes }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="d-flex justify-content-between my-2">
+            <h2 class="mainTitles">{{ 'front.home.artists.title'|trans }}</h2>
+            <div>
+                <a class="btn btn-outline-dark"
+                   href="{{ path('front_album_index') }}">{{ 'front.home.details'|trans }}</a>
+            </div>
+        </div>
+
+        <div class="row">
+            {% for artist in artists %}
+                <div class="albumCards">
+                    <div class="myCard">
+                        <img src="{{ artist.bigPicture }}" class="card-img" alt="{{ artist.name }}">
+                    </div>
+                    <div class="albumText">
+                        <div class="albumTitle">
+                            {{ artist.name }}
+                        </div>
+                        <div>
+                            {% for artistAlbums in artist.albums %}
+                                {% for genre in artistAlbums.genre %}
+                                    {{ genre.name }}
+                                {% endfor %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {# <div class="card-img-overlay"> #}
+                {# <h5 class="card-title">Card title</h5> #}
+                {# <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> #}
+                {# <p class="card-text">Last updated 3 mins ago</p> #}
+                {# </div> #}
+            {% endfor %}
+        </div>
+
+    </div>
+
+
 {% endblock %}

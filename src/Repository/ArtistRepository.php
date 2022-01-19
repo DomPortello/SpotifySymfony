@@ -25,6 +25,18 @@ class ArtistRepository extends ServiceEntityRepository
             ->orderBy($orderBy, $order);
     }
 
+    public function getAllArtistsWithRelations(string $order = 'track.rank'): array
+    {
+        return $this->createQueryBuilder('artist')
+            ->select('artist', 'track', 'genre', 'album')
+            ->leftJoin('artist.tracks', 'track')
+            ->leftJoin('artist.albums', 'album')
+            ->leftJoin('album.genre', 'genre')
+            ->orderBy($order, 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Artist[] Returns an array of Artist objects
     //  */
