@@ -96,7 +96,7 @@ class GetAlbumsCommand extends Command
                             ->setBigPicture($responseGenre['picture_big'])
                             ->setXlPicture($responseGenre['picture_xl']);
                         $this->entityManager->persist($genreEntity);
-                        dump($genreEntity->getName());
+                        $this->entityManager->flush();
                     }
 
                     $album->addGenre($genreEntity);
@@ -114,6 +114,7 @@ class GetAlbumsCommand extends Command
                         ->setXlPicture($responseArtist['picture_xl'])
                         ->setNbAlbum($responseArtist['nb_album']);
                     $this->entityManager->persist($artistEntity);
+                    $this->entityManager->flush();
                 }
                 $album->setArtist($artistEntity);
 
