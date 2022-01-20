@@ -56,6 +56,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->orders = new ArrayCollection();
     }
 
+    public function isGranted($role)
+    {
+        return in_array($role, $this->getRoles());
+    }
+
     public function getId(): ?int
     {
         return $this->id;

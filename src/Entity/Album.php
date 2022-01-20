@@ -50,7 +50,7 @@ class Album
     private ?int $duration;
 
     #[ORM\Column(type: 'datetime', nullable: true)]
-    #[Assert\DateTime, Assert\Type('datetime')]
+    #[Assert\Type('datetime')]
     private ?Datetime $releaseAt;
 
     #[ORM\Column(type: 'boolean')]
