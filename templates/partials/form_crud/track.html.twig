@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col-6">
+        {{ form_row(form.title) }}
+    </div>
+    <div class="col-2">
+        {{ form_row(form.duration) }}
+    </div>
+    <div class="col-2">
+        {{ form_row(form.position) }}
+    </div>
+    <div class="col-2">
+        {{ form_row(form.rank) }}
+    </div>
+    <div class="col-6">
+        {{ form_row(form.releaseAt) }}
+    </div>
+    <div class="col-6">
+        {{ form_row(form.preview) }}
+    </div>
+    <div class="col-2">
+        {{ form_row(form.price) }}
+    </div>
+    <div class="col-5">
+        <div>
+            {{ form_label(form.album) }}
+        </div>
+        {{ form_widget(form.album) }}
+    </div>
+    <div class="col-5">
+        <div>
+            {{ form_label(form.artist) }}
+        </div>
+        {{ form_widget(form.artist) }}
+    </div>
+    <div class="col-12">
+        {{ form_row(form.lyrics) }}
+    </div>
+</div>

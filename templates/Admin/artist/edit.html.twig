@@ -1,0 +1,10 @@
+{% extends 'Admin/admin_base.html.twig' %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block body %}
+    {% include 'partials/_crud_form.html.twig' with {'h1': "Formulaire d'ajout d'un Artiste", 'entity': 'artist'} %}
+{% endblock %}
+

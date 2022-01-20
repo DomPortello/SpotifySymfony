@@ -41,6 +41,7 @@ class AlbumController extends AbstractController
 
             $qb->where('album.title LIKE :data')
                 ->orWhere('artist.name LIKE :data')
+                ->orWhere('tracks.title LIKE :data')
                 ->setParameter(':data', "%$data%");
         }
 
@@ -53,4 +54,8 @@ class AlbumController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+//    public function show{
+//
+//    }
 }
