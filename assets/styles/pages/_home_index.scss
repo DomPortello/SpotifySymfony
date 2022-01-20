@@ -1,44 +1,68 @@
 @import 'assets/styles/common/variables';
 
-.mainTitles{
+.mainTitles {
   color: $main-color;
 }
-.albumCards{
+
+.albumCards {
   width: 20%;
   height: auto;
-    .albumText{
-      text-align: center;
-      .albumTitle{
-        font-weight: bold;
-        color: $main-color;
-      }
-      .albumText{
-        font-weight: lighter;
-        color: #555555;
-      }
+
+  span {
+    top: 95px;
+    left: 70px;
+    color: aliceblue;
+    padding: 7px;
+    background-color: rgba(0, 0, 0, 0.65);
+    opacity: 100%;
+    z-index: -1000;
+  }
+
+  .albumText {
+    text-align: center;
+
+    .albumTitle {
+      font-weight: bold;
+      color: $main-color;
     }
+
+    .albumText {
+      font-weight: lighter;
+      color: #555555;
+    }
+  }
 }
-.myCol-20{
+
+.albumCards a img:hover {
+  opacity: 5%;
+  transition-duration: 0.8s;
+}
+
+.myCol-20 {
   width: 30%;
   height: 150px;
   padding: 0 1rem;
   margin: 1rem 0;
 }
-.trackCards{
-  border-radius: 10px ;
+
+.trackCards {
+  border-radius: 10px;
   background-color: aliceblue;
   width: 100%;
   height: auto;
   display: flex;
   flex-direction: row;
-  .myCardImg{
+
+  .myCardImg {
     width: 40%;
     height: auto;
-    img{
+
+    img {
       border-radius: 10px 0 0 10px;
     }
   }
-  .trackText{
+
+  .trackText {
     display: flex;
     text-align: left;
     margin-left: 5px;
@@ -46,11 +70,13 @@
     justify-content: center;
     align-items: center;
     width: 60%;
-    .trackTitle{
+
+    .trackTitle {
       font-weight: bold;
       color: $main-color;
     }
-    .trackArtist{
+
+    .trackArtist {
       color: #555555;
     }
   }

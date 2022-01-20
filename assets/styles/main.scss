@@ -5,11 +5,13 @@ $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 @import '~@fortawesome/fontawesome-free/scss/regular';
 @import '~@fortawesome/fontawesome-free/scss/brands';
 
+@import 'common/variables';
 @import "partials/header";
 @import "partials/header_admin";
 @import "pages/common";
 @import "pages/tableau";
 
 @import 'pages/home_index';
-@import 'common/variables';
+@import "pages/user_profil";
+@import 'pages/form_profil';
 

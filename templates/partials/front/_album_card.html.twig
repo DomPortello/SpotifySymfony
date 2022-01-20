@@ -1,7 +1,8 @@
 <div class="row">
     {% for album in albums %}
-            <div class="albumCards mb-5">
-                <a href="{{ path('front_album_details',{'id': album.id}) }}" class="text-decoration-none">
+        <div class="albumCards mb-5 position-relative">
+            <span class="ghostButton btn position-absolute">Buy this album</span>
+            <a href="{{ path('front_album_details',{'id': album.id}) }}" class="text-decoration-none">
                 <div class="myCard">
                     <img src="{{ album.bigCover }}" class="card-img" alt="{{ album.title }}">
                 </div>
@@ -13,7 +14,7 @@
                         {{ album.artist.name }}
                     </div>
                 </div>
-                </a>
-            </div>
+            </a>
+        </div>
     {% endfor %}
 </div>
