@@ -3,18 +3,58 @@
 {% block title %}Hello UserProfileController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/HB/Desktop/symfony/SpotifySymfony/src/Controller/UserProfileController.php'|file_link(0) }}">src/Controller/UserProfileController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/HB/Desktop/symfony/SpotifySymfony/templates/user_profile/index.html.twig'|file_link(0) }}">templates/user_profile/index.html.twig</a></code></li>
-    </ul>
+<div class="container">
+    <div class="row mt-5">
+        {% if app.user %}
+            {% set user = app.user %}
+            <div class="col-10 offset-1 card-profil bg-dark">
+                <div class="row">
+                    <div class="col-3">
+                        <div class="left-content">
+                            {% if user.picture %}
+                                <img class="img-fluid w-100 rounded-circle" src="{{ asset('upload/') ~ user.picture }}" alt="Photo de profil de {{ user.nickName }}">
+                            {% else %}
+                                <img class="img-fluid w-100 rounded-circle" src="https://thumbs.dreamstime.com/b/ic%C3%B4ne-de-profil-avatar-par-d%C3%A9faut-m%C3%A9dias-sociaux-utilisateur-vectoriel-social-portrait-176194876.jpg" alt="Photo par défaut">
+                            {% endif %}
+                            <div class="mt-2 mb-5 text-center w-100 fw-bolder text-decoration-underline text-light">
+                                {{ user.nickName }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-9">
+                        <div class="right-content pt-5 pb-3 px-5 h-100 bg-light">
+                            <div class="row gy-2 h-100 align-items-center">
+                                <div class="col-6">
+                                    <div><span class="profil-detail">FirstName:</span><span class="profil-value">{{ user.firstName }}</span></div>
+                                </div>
+                                <div class="col-6">
+                                    <div><span class="profil-detail">LastName:</span><span class="profil-value">{{ user.lastName }}</span></div>
+                                </div>
+                                <div class="col-6">
+                                    <div><span class="profil-detail">Email:</span><span class="profil-value">{{ user.email }}</span></div>
+                                </div>
+                                <div class="col-6">
+                                    <div><span class="profil-detail">Téléphone:</span><span class="profil-value">{{ user.phoneNumber }}</span></div>
+                                </div>
+                                <div class="col-6">
+                                    <div><span class="profil-detail">Age:</span><span class="profil-value">{{ user.birthDate|date('d-m-Y') }}</span></div>
+                                </div>
+                                <div class="col-6">
+                                    <div><span class="profil-detail">Genre:</span><span class="profil-value">{{ user.gender }}</span></div>
+                                </div>
+                                <div class="col-12 text-end">
+                                    <a href="{{ path('front_user_profil_edit') }}" class="btn btn-outline-primary">Modifier votre profil</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="col-12">
+                Aucun utilisateur de connecter.
+            </div>
+        {% endif %}
+    </div>
 </div>
 {% endblock %}

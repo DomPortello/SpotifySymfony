@@ -1,0 +1,20 @@
+{% extends 'Front/front_base.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-10 offset-1">
+            <div class="form-profil my-3">
+                {{ form_start(form) }}
+                {% include 'partials/form_crud/user.html.twig' %}
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+

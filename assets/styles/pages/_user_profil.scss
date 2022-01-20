@@ -1,0 +1,19 @@
+.card-profil{
+  border: 3px solid $main-color;
+  border-radius: 20px;
+  .left-content{
+
+  }
+
+  .right-content{
+    .profil-detail{
+      text-decoration: underline;
+      color: $main-color;
+      margin-right: 0.8rem;
+    }
+
+    .profil-value{
+      font-weight: bolder;
+    }
+  }
+}

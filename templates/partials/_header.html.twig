@@ -17,7 +17,7 @@
                             <i class="fas fa-user me-2"></i>{{ app.user.nickName }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarProfilDropdown">
-                            <li><a class="dropdown-item" href="{{ path('front_user_profile') }}">Profile</a></li>
+                            <li><a class="dropdown-item" href="{{ path('front_user_profil') }}">Profil</a></li>
                             {% if app.user.granted('ROLE_ADMIN') %}
                                 <li><a href="{{ path('admin_home') }}" class="dropdown-item">Administration</a></li>
                             {% endif %}
