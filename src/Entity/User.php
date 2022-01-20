@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
+use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -43,6 +44,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $picture;
 
     #[ORM\Column(type: 'datetime', nullable: true)]
+    #[Assert\Type('datetime')]
     private ?Datetime $birthDate;
 
     #[ORM\Column(type: 'string', length: 1, nullable: true)]

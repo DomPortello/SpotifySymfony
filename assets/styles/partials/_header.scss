@@ -1,15 +1,15 @@
 nav {
-  background-color: #048b9a;
+  background-color: $main-color;
 
   color: aliceblue;
   a, a.nav-link{
     color: aliceblue;
 
     &:hover{
-      color: #ca1f1f;
+      color: $second-color;
     }
     &:focus{
-      color: #ca1f1f;
+      color: $second-color;
     }
   }
 }
