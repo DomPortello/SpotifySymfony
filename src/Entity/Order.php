@@ -20,8 +20,8 @@ class Order
     #[ORM\Column(type: 'datetime')]
     private DateTime $createdAt;
 
-    #[ORM\Column(type: 'datetime')]
-    private DateTime $endedAt;
+    #[ORM\Column(type: 'datetime', nullable: true)]
+    private ?DateTime $endedAt;
 
     #[ORM\Column(type: 'string', length: 10)]
     private string $status;
@@ -60,7 +60,7 @@ class Order
         return $this->endedAt;
     }
 
-    public function setEndedAt(\DateTimeInterface $endedAt): self
+    public function setEndedAt(?\DateTimeInterface $endedAt): self
     {
         $this->endedAt = $endedAt;
 

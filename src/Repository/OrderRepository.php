@@ -5,6 +5,8 @@ namespace App\Repository;
 use App\Entity\Order;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\QueryBuilder;
+
 
 /**
  * @method Order|null find($id, $lockMode = null, $lockVersion = null)
@@ -17,6 +19,23 @@ class OrderRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Order::class);
+    }
+
+    /**
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function getActiveOrderByUserAndStatus(int $id, string $status = 'active'): ?Order
+    {
+        return $this->createQueryBuilder('cart')
+            ->select('cart')
+            ->leftJoin('cart.user', 'user')
+            ->where('user.id = :id')
+            ->andWhere('cart.status = :status')
+            ->setParameter(':id', $id)
+            ->setParameter(':status', $status)
+
+            ->getQuery()
+            ->getOneOrNullResult();
     }
 
     // /**
