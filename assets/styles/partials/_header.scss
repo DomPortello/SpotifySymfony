@@ -1,27 +1,15 @@
 nav {
   background-color: #048b9a;
 
-  a {
-    text-decoration: none;
+  color: aliceblue;
+  a, a.nav-link{
     color: aliceblue;
-  }
 
-  a:hover {
-    color: #ca1f1f;
-  }
-
-  .nav-item {
-    a {
-      color: aliceblue;
-    }
-
-    a:hover {
+    &:hover{
       color: #ca1f1f;
     }
-  }
-
-  .active {
-    color: #ca1f1f !important;
-    background-color: transparent;
+    &:focus{
+      color: #ca1f1f;
+    }
   }
 }

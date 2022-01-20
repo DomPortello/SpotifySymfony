@@ -72,7 +72,6 @@ class AlbumController extends AbstractController
             $this->em->flush();
             return $this->redirectToRoute('admin_album_index');
         }
-
         return $this->render('Admin/album/edit.html.twig', [
                 'form' => $form->createView(),
             ]
