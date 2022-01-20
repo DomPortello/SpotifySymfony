@@ -1,0 +1,22 @@
+<div class="row justify-content-center">
+    {% for track in tracks %}
+        <div class="myCol-20">
+            <div class="trackCards">
+                <div class="myCardImg">
+                    <img class="img-fluid" src="{{ track.album.mediumCover }}" alt="{{ track.title }}">
+                </div>
+                <div class="trackText">
+                    <div class="trackTitle">
+                        {{ track.title }}
+                    </div>
+                    <div class="trackArtist">
+                        {{ track.artist.name }}
+                    </div>
+                    <div class="text-muted">
+                        {{ track.duration|get_duration_in_minutes }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

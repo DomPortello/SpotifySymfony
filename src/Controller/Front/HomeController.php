@@ -2,6 +2,7 @@
 
 namespace App\Controller\Front;
 
+use App\Form\SearchAlbumByNameType;
 use App\Repository\AlbumRepository;
 use App\Repository\ArtistRepository;
 use App\Repository\GenreRepository;
@@ -40,17 +41,30 @@ class HomeController extends AbstractController
     #[Route('/', name: 'front_home_index')]
     public function index(Request $request): Response
     {
+        $form = $this->createForm(SearchAlbumByNameType::class);
+        $form->handleRequest($request);
+
+        $qbAlbums = $this->albumRepository->getQbAll();
+
+        if ($form->isSubmitted() && $form->isValid()){
+            $data = $form->get('title')->getData();
+
+            $qbAlbums->where('album.title LIKE :data')
+                ->orWhere('artist.name LIKE :data')
+                ->orWhere('track.title LIKE :data')
+                ->setParameter(':data', "%$data%");
+        }
         $qbArtist = $this->artistRepository->getAllArtistsWithRelations();
-        dump($qbArtist);
+
         $qbTracks = $this->trackRepository->getAllTracksWithRelations('track.rank');
         $qbAlbums = $this->albumRepository->getAllAlbumsWithRelations();
-        dump($qbAlbums);
         $paginationAlbum = $this->paginator->paginate($qbAlbums, $request->query->getInt('page', 1), 5);
         $paginationTracks = $this->paginator->paginate($qbTracks, $request->query->getInt('page', 1), 9);
         $paginationArtist = $this->paginator->paginate($qbArtist, $request->query->getInt('page', 1), 5);
 
         return $this->render('Front/home/index.html.twig', [
             'controller_name' => 'HomeController',
+            'form' => $form->createView(),
             'albums' => $paginationAlbum,
             'tracks' => $paginationTracks,
             'artists' => $paginationArtist,

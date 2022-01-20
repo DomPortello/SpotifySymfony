@@ -8,30 +8,13 @@
         {% form_theme form 'bootstrap_5_layout.html.twig' %}
         {{ form_start(form) }}
         {{ form_end(form) }}
-        <a href="{{ path('front_album_index') }}" class="my-2 btn btn-outline-info text-decoration-none">Revenir à tous les albums</a>
-        <div class="row gy-4">
-            {% for album in pagination %}
-                <div class="col-6">
-                    <div class="card myCard h-100 bg-dark text-light mb-3">
-                        <div class="row g-0">
-                            <div class="col-md-4 leftContent">
-                                <img src="{{ album.mediumCover }}" class="img-fluid rounded-start" alt="{{ album.title }}">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ album.title }}</h5>
-                                    <p class="card-text">{{ album.artist.name }}
-                                        <img src="{{ album.artist.smallPicture }}" alt="{{ album.artist.name }}"></p>
-                                    <p class="card-text"><small class="text-muted">{{ album.releaseAt|date('Y-m-d') }}</small></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-            <div class="pagination">
-                {{ knp_pagination_render(pagination) }}
-            </div>
+        <a href="{{ path('front_home_index') }}" class="my-2 btn btn-outline-info text-decoration-none">Revenir à tous
+            les albums</a>
+
+        {% include 'partials/front/_album_card.html.twig' %}
+
+        <div class="pagination">
+            {{ knp_pagination_render(albums) }}
         </div>
     </div>
 {% endblock %}

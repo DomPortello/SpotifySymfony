@@ -1,0 +1,21 @@
+<div class="row">
+    {% for artist in artists %}
+        <div class="albumCards">
+            <div class="myCard">
+                <img src="{{ artist.bigPicture }}" class="card-img" alt="{{ artist.name }}">
+            </div>
+            <div class="albumText">
+                <div class="albumTitle">
+                    {{ artist.name }}
+                </div>
+                <div>
+                    {% for artistAlbums in artist.albums %}
+                        {% for genre in artistAlbums.genre %}
+                            {{ genre.name }}
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

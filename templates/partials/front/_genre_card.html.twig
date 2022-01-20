@@ -1,0 +1,14 @@
+<div class="row">
+    {% for genre in genres %}
+        <div class="albumCards">
+            <div class="myCard">
+                <img src="{{ genre.bigPicture }}" class="card-img" alt="{{ genre.name }}">
+            </div>
+            <div class="albumText">
+                <div class="albumTitle">
+                    {{ genre.name }}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

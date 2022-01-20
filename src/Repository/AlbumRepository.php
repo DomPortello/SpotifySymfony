@@ -77,4 +77,9 @@ class AlbumRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('a')
             ->orderBy($orderBy, $order);
     }
+
+//    public function getAlbumBySlugs(string $artistSlug, string $albumSlug)
+//    {
+//
+//    }
 }

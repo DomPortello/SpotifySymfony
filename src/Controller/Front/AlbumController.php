@@ -45,17 +45,30 @@ class AlbumController extends AbstractController
                 ->setParameter(':data', "%$data%");
         }
 
-        $pagination = $this->paginator->paginate($qb, $request->query->getInt('page', 1), 4);
+        $albumsPagination = $this->paginator->paginate($qb, $request->query->getInt('page', 1), 10);
 
         return $this->render('Front/album/index.html.twig', [
             'controller_name' => 'AlbumController',
 //            'albums' => $this->albumRepository->getAllAlbumsWithRelations(),
-            'pagination' => $pagination,
+            'albums' => $albumsPagination,
             'form' => $form->createView()
         ]);
     }
 
-//    public function show{
-//
-//    }
+    /**
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    #[Route('/{id}', name: 'front_album_details')]
+    public function show(int $id)
+    {
+        $album = $this->albumRepository->getQbAll();
+        $album->where('album.id = :id')
+            ->setParameter(':id', $id)
+            ->getQuery()
+            ->getOneOrNullResult();
+
+        return $this->render('Front/album/details.html.twig', [
+            'album' => $album
+        ]);
+    }
 }
