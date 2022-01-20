@@ -36,7 +36,7 @@ class AlbumController extends AbstractController
 
         $qb = $this->albumRepository->getQbAll();
 
-        if ($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->get('title')->getData();
 
             $qb->where('album.title LIKE :data')
@@ -53,4 +53,11 @@ class AlbumController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+    #[Route('/artist/{artist}/album/{album}', name: 'front_album_details')]
+    public function albumDetails(Request $request)
+    {
+        
+    }
+
 }
