@@ -1,9 +1,9 @@
 <nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
+    <div class="container">
         <a href="{{ path('front_home_index') }}"
            class="navbar-brand {% if app.request.get('_route') == 'front_home_index' %}active{% endif %}"><i
                     class="fas fa-home me-2"></i>Home</a>
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a href="{{ path('front_album_index') }}"
@@ -11,6 +11,24 @@
                        aria-current="page"><i
                                 class="fas fa-compact-disc me-2"></i>Let's music !</a>
                 </li>
+                {% if app.user %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarProfilDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user me-2"></i>{{ app.user.nickName }}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarProfilDropdown">
+                            <li><a class="dropdown-item" href="{{ path('front_user_profile') }}">Profile</a></li>
+                            {% if app.user.granted('ROLE_ADMIN') %}
+                                <li><a href="{{ path('admin_home') }}" class="dropdown-item">Administration</a></li>
+                            {% endif %}
+                            <li><a class="dropdown-item" href="{{ path('app_logout') }}">Deconnexion</a></li>
+                        </ul>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a href="{{ path('app_login') }}" class="nav-link"><i class="fas fa-user me-2"></i>Connexion</a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </div>

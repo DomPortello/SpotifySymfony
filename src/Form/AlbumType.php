@@ -65,6 +65,7 @@ class AlbumType extends AbstractType
             ])
             ->add('lyrics', TextareaType::class, [
                 'label' => 'Paroles',
+                'required' => false
             ])
             ->add('price', IntegerType::class, [
                 'label' => 'Prix'
