@@ -82,4 +82,10 @@ class OrderRepository extends ServiceEntityRepository
             ->getQuery()
             ->getOneOrNullResult();
     }
+
+    public function findByAlpha($orderBy = 'o.endedAt', $order = 'DESC')
+    {
+        return $this->createQueryBuilder('o')
+            ->orderBy($orderBy, $order);
+    }
 }

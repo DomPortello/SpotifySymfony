@@ -24,7 +24,7 @@
                     <tbody>
                     {% for user in pagination %}
                         <tr>
-                            <td>{{ user.picture }}</td>
+                            <td style="max-width: 30px"><img class="img-fluid" src="{{ asset('upload/') ~ user.picture }}" alt=""></td>
                             <td>{{ user.email }}</td>
                             <td>{{ user.firstName }}</td>
                             <td>{{ user.lastName }}</td>
