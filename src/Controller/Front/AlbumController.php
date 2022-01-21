@@ -61,12 +61,14 @@ class AlbumController extends AbstractController
     #[Route('/{id}', name: 'front_album_details')]
     public function show(int $id)
     {
-        $album = $this->albumRepository->getQbAll();
-        $album->where('album.id = :id')
-            ->setParameter(':id', $id)
-            ->getQuery()
-            ->getOneOrNullResult();
-
+//        $album = $this->albumRepository->getQbAll();
+//        $album->where('album.id = :id')
+//            ->setParameter(':id', $id)
+//            ->getQuery()
+//            ->getOneOrNullResult();
+        
+        $album = $this->albumRepository->find($id);
+        
         return $this->render('Front/album/details.html.twig', [
             'album' => $album
         ]);

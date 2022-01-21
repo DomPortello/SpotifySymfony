@@ -1,0 +1,49 @@
+{% extends 'Front/front_base.html.twig' %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block body %}
+
+    <div class="albumCardsSolo container mt-5">
+        <div class="row">
+            <div class="col-4">
+                <div class="myCard">
+                    <img src="{{ album.bigCover }}" class="card-img" alt="{{ album.title }}">
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="albumText" id="scrollbarStyle">
+                    <div class="albumTitle">
+                        <p>Album : {{ album.title }}</p>
+                    </div>
+                    <div class="albumArtist">
+                        <p><a href="#">Artiste : {{ album.artist.name }}</a></p>
+                    </div>
+                    <div class="albumTracks">
+                        <p>Liste des chansons :</p>
+                        {% set id = 1 %}
+                        {% for track in album.tracks %}
+                            <p>{{ id }} - {{ track.title }}</p>
+                            {% set id = id + 1 %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class=" row text-center">
+                    <div class="col-12">
+                        <a href="/order/add/album/6" class="btn btn-success mb-2 w-100">Acheter cet album</a>
+
+                    </div>
+                    <div class="col-12">
+                        <p class="price w-100">{{ album.price }}€</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

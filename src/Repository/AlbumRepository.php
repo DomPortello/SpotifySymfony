@@ -40,8 +40,6 @@ class AlbumRepository extends ServiceEntityRepository
             ->leftJoin('album.genre', 'genre')
             ->leftJoin('album.tracks', 'tracks')
             ->orderBy('album.releaseAt', 'DESC');
-//            ->getQuery()
-//            ->getResult();
     }
 
     // /**
