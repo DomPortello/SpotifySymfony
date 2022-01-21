@@ -6,15 +6,30 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h1 class="my-3">Panier de {{ order.user.nickName }}</h1>
+            <h1 class="my-3">Panier de {{ app.user.nickName }}</h1>
         </div>
         <div class="col-12">
             <div class="row gy-2">
-                {% for orderLine in order.orderLines %}
-                    <div class="col-12">
-                        {% include 'partials/front/_order_line.html.twig' %}
+                {% if order %}
+                    {% for orderLine in order.orderLines %}
+                        <div class="col-12">
+                            {% include 'partials/front/_order_line.html.twig' %}
+                        </div>
+                    {% endfor %}
+                    <div class="col-6 text-center">
+                        <a href="{{ path('front_order_payment') }}" class="btn btn-success">Valider la Commande</a>
                     </div>
-                {% endfor %}
+                    <div class="col-3 text-end border-end border-1 border-dark">
+                        <span class="me-5">Total Price</span>
+                    </div>
+                    <div class="col-1 text-center">
+                        <span>{{ total }}</span>
+                    </div>
+                {% else %}
+                    <div class="">
+                        Votre panier est vide
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>

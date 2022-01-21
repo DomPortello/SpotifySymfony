@@ -67,7 +67,7 @@ class OrderRepository extends ServiceEntityRepository
         ;
     }
     */
-    public function findOrderByUserWithProducts(User $user): ?Order
+    public function findActiveOrderByUserWithProducts(User $user): ?Order
     {
         return $this->createQueryBuilder('o')
             ->select('o', 'orderLines', 'album', 'track', 'artist' )
@@ -77,6 +77,8 @@ class OrderRepository extends ServiceEntityRepository
             ->leftJoin('orderLines.track', 'track')
             ->where('o.user = :user')
             ->setParameter('user', $user)
+            ->andWhere('o.status = :active')
+            ->setParameter('active', 'active')
             ->getQuery()
             ->getOneOrNullResult();
     }
