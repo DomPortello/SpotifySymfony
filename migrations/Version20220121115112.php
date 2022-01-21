@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20220118092855 extends AbstractMigration
+final class Version20220121115112 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -24,7 +24,7 @@ final class Version20220118092855 extends AbstractMigration
         $this->addSql('CREATE TABLE album_genre (album_id INT NOT NULL, genre_id INT NOT NULL, INDEX IDX_F5E879DE1137ABCF (album_id), INDEX IDX_F5E879DE4296D31F (genre_id), PRIMARY KEY(album_id, genre_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE artist (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(255) NOT NULL, small_picture VARCHAR(255) DEFAULT NULL, medium_picture VARCHAR(255) DEFAULT NULL, big_picture VARCHAR(255) DEFAULT NULL, xl_picture VARCHAR(255) DEFAULT NULL, nb_album INT DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE genre (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(255) NOT NULL, small_picture VARCHAR(255) DEFAULT NULL, medium_picture VARCHAR(255) DEFAULT NULL, big_picture VARCHAR(255) DEFAULT NULL, xl_picture VARCHAR(255) DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE `order` (id INT AUTO_INCREMENT NOT NULL, user_id INT NOT NULL, created_at DATETIME NOT NULL, ended_at DATETIME NOT NULL, status VARCHAR(10) NOT NULL, INDEX IDX_F5299398A76ED395 (user_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE `order` (id INT AUTO_INCREMENT NOT NULL, user_id INT NOT NULL, created_at DATETIME NOT NULL, ended_at DATETIME DEFAULT NULL, status VARCHAR(10) NOT NULL, INDEX IDX_F5299398A76ED395 (user_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE order_line (id INT AUTO_INCREMENT NOT NULL, order_entity_id INT NOT NULL, track_id INT DEFAULT NULL, album_id INT DEFAULT NULL, quantity INT NOT NULL, INDEX IDX_9CE58EE13DA206A5 (order_entity_id), INDEX IDX_9CE58EE15ED23C43 (track_id), INDEX IDX_9CE58EE11137ABCF (album_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE track (id INT AUTO_INCREMENT NOT NULL, album_id INT NOT NULL, artist_id INT NOT NULL, title VARCHAR(255) NOT NULL, duration INT DEFAULT NULL, position INT DEFAULT NULL, rank INT DEFAULT NULL, release_at DATETIME DEFAULT NULL, lyrics VARCHAR(255) DEFAULT NULL, preview VARCHAR(255) DEFAULT NULL, price DOUBLE PRECISION NOT NULL, INDEX IDX_D6E3F8A61137ABCF (album_id), INDEX IDX_D6E3F8A6B7970CF8 (artist_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE user (id INT AUTO_INCREMENT NOT NULL, email VARCHAR(180) NOT NULL, roles JSON NOT NULL, password VARCHAR(255) NOT NULL, nick_name VARCHAR(255) NOT NULL, first_name VARCHAR(255) DEFAULT NULL, last_name VARCHAR(255) DEFAULT NULL, phone_number VARCHAR(20) DEFAULT NULL, picture VARCHAR(255) DEFAULT NULL, birth_date DATETIME DEFAULT NULL, gender VARCHAR(1) DEFAULT NULL, UNIQUE INDEX UNIQ_8D93D649E7927C74 (email), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
