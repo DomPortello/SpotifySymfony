@@ -1,0 +1,22 @@
+<div class="card_album_order">
+    <div class="row">
+        <div class="col-2">
+            <img class="img-fluid" src="{{ orderLine.album.mediumCover }}" alt="">
+        </div>
+        <div class="col-2 d-flex justify-content-center align-items-center">
+            <span class="fs-5 text-decoration-underline text-center">{{ orderLine.album.title }}</span>
+        </div>
+        <div class="col-2 d-flex justify-content-center align-items-center">
+            <span class="fs-5 text-center">{{ orderLine.album.artist.name }}</span>
+        </div>
+        <div class="col-2 d-flex justify-content-center align-items-center">
+            <span class="fs-5">{{ orderLine.album.price }} €</span>
+        </div>
+        <div class="col-2 d-flex justify-content-center align-items-center">
+            <span class="fs-5">{{ orderLine.quantity }}</span>
+        </div>
+        <div class="col-2 d-flex justify-content-center align-items-center">
+            <button class="btn btn-outline-danger"><i class="fas fa-times-circle"></i></button>
+        </div>
+    </div>
+</div>

@@ -1,20 +1,13 @@
-<div class="row">
-    {% for album in albums %}
-        <div class="albumCards mb-5 position-relative">
-            <span class="ghostButton btn position-absolute">Buy this album</span>
-            <a href="{{ path('front_album_details',{'id': album.id}) }}" class="text-decoration-none">
-                <div class="myCard">
-                    <img src="{{ album.bigCover }}" class="card-img" alt="{{ album.title }}">
-                </div>
-                <div class="albumText">
-                    <div class="albumTitle">
-                        {{ album.title }}
-                    </div>
-                    <div class="albumArtist">
-                        {{ album.artist.name }}
-                    </div>
-                </div>
-            </a>
+<a href="{{ path('front_album_details',{'id': entity.id}) }}" class="text-decoration-none">
+    <div class="myCard">
+        <img src="{{ entity.bigCover }}" class="card-img" alt="{{ entity.title }}">
+    </div>
+    <div class="albumText">
+        <div class="albumTitle">
+            {{ entity.title }}
         </div>
-    {% endfor %}
-</div>
+        <div class="albumArtist">
+            {{ entity.artist.name }}
+        </div>
+    </div>
+</a>

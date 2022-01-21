@@ -24,6 +24,11 @@
                             <li><a class="dropdown-item" href="{{ path('app_logout') }}">Deconnexion</a></li>
                         </ul>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ path('front_order_index') }}" class="nav-link {% if app.request.get('_route') == 'front_order_index' %}active{% endif %}">
+                            <i class="fas fa-shopping-cart"></i>
+                        </a>
+                    </li>
                 {% else %}
                     <li class="nav-item">
                         <a href="{{ path('app_login') }}" class="nav-link"><i class="fas fa-user me-2"></i>Connexion</a>

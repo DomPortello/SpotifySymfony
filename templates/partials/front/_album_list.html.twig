@@ -1,0 +1,8 @@
+<div class="row">
+    {% for album in albums %}
+        <div class="albumCards mb-5 position-relative">
+            <a class="ghostButton btn btn-outline-dark position-absolute" href="{{ path('front_order_add_album', {'id': album.id}) }}">Buy this album</a>
+            {% include 'partials/front/_album_card.html.twig' with {'entity': album} %}
+        </div>
+    {% endfor %}
+</div>

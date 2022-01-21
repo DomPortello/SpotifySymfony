@@ -6,6 +6,7 @@ use App\Form\UserType;
 use Doctrine\ORM\EntityManagerInterface;
 use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,6 +19,7 @@ class UserProfileController extends AbstractController
 
     public function __construct(
         private EntityManagerInterface $em,
+        private Filesystem $filesystem
     ){
     }
     #[Route('profil', name: 'front_user_profil')]
@@ -46,6 +48,7 @@ class UserProfileController extends AbstractController
 
                 try{
                     $profilPicture->move($this->getParameter('upload_dir'), $newFileName);
+                    $this->filesystem->remove($this->getParameter('upload_dir') . '/' . $user->getPicture());
                     $user->setPicture($newFileName);
                 }catch(FileException $e){
                     dump($e->getMessage());

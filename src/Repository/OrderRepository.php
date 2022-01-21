@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Order;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\ORM\QueryBuilder;
@@ -66,4 +67,17 @@ class OrderRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function findOrderByUserWithProducts(User $user): ?Order
+    {
+        return $this->createQueryBuilder('o')
+            ->select('o', 'orderLines', 'album', 'track', 'artist' )
+            ->leftJoin('o.orderLines', 'orderLines')
+            ->leftJoin('orderLines.album', 'album')
+            ->leftJoin('album.artist', 'artist')
+            ->leftJoin('orderLines.track', 'track')
+            ->where('o.user = :user')
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 }

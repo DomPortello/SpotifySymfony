@@ -11,7 +11,7 @@
         <a href="{{ path('front_home_index') }}" class="my-2 btn btn-outline-info text-decoration-none">Revenir à tous
             les albums</a>
 
-        {% include 'partials/front/_album_card.html.twig' %}
+        {% include 'partials/front/_album_list.html.twig' %}
 
         <div class="pagination">
             {{ knp_pagination_render(albums) }}
