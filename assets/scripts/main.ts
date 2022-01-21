@@ -3,3 +3,4 @@ import 'bootstrap/js/dist/dropdown'
 
 
 import './common/collectionForm';
+import './common/stripe';

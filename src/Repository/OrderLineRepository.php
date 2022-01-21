@@ -47,4 +47,15 @@ class OrderLineRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function totalOrder(?int $id)
+    {
+        return $this->createQueryBuilder('orderLine')
+            ->select('SUM(album.price * orderLine.quantity)')
+            ->join('orderLine.album', 'album')
+            ->join('orderLine.orderEntity', 'orderEntity')
+            ->where('orderEntity.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
 }
