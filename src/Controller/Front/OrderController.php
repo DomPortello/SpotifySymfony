@@ -26,7 +26,7 @@ use function Symfony\Component\String\u;
 class OrderController extends AbstractController
 {
 
-    private User $user;
+    private ?User $user;
 
     public function __construct(
         private OrderRepository $orderRepository,
@@ -37,7 +37,11 @@ class OrderController extends AbstractController
         private Security $security
     )
     {
-        $this->user = $this->userRepository->findOneBy(['email' => $this->security->getUser()->getUserIdentifier()]);
+        if($this->security->getUser() != null){
+            $this->user = $this->userRepository->findOneBy(['email' => $this->security->getUser()->getUserIdentifier()]);
+        }else{
+            $this->user = null;
+        }
     }
 
     #[Route('/', name: 'front_order_index')]
@@ -113,6 +117,9 @@ class OrderController extends AbstractController
     #[Route('/add/album/{id}', name: 'front_order_add_album')]
     public function addAlbum(int $id): Response
     {
+        if($this->user == null){
+            return $this->redirectToRoute('app_login');
+        }
         $order = $this->orderRepository->getActiveOrderByUserAndStatus($this->user->getId());
         $album = $this->albumRepository->getQbAll()->where('album.id = :id')->setParameter(':id', $id)->getQuery()->getOneOrNullResult();
 

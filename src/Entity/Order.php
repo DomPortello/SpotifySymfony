@@ -2,28 +2,48 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\OrderRepository;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: OrderRepository::class)]
 #[ORM\Table(name: '`order`')]
+#[ApiResource(
+    collectionOperations: [
+        'get' => ["security" => "is_granted('ROLE_ADMIN')",
+            'normalization_context' => [
+                'groups' => ['api']
+            ]
+        ]
+    ],
+    itemOperations: [
+        'get'=>['normalization_context' => [
+            'groups' => ['api']
+        ]]
+       ],
+)]
 class Order
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
+    #[Groups(['api'])]
     private ?int $id;
 
     #[ORM\Column(type: 'datetime')]
+    #[Groups(['api'])]
     private DateTime $createdAt;
 
     #[ORM\Column(type: 'datetime', nullable: true)]
+    #[Groups(['api'])]
     private ?DateTime $endedAt;
 
     #[ORM\Column(type: 'string', length: 10)]
+    #[Groups(['api'])]
     private string $status;
 
     #[ORM\OneToMany(mappedBy: 'orderEntity', targetEntity: OrderLine::class, orphanRemoval: true)]

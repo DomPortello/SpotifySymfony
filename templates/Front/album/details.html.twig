@@ -26,6 +26,10 @@
                         {% set id = 1 %}
                         {% for track in album.tracks %}
                             <p>{{ id }} - {{ track.title }}</p>
+                            <audio controls src="{{ track.preview }}">
+                                Your browser does not support the
+                                <code>audio</code> element.
+                            </audio>
                             {% set id = id + 1 %}
                         {% endfor %}
                     </div>
