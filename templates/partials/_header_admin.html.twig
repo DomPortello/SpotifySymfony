@@ -39,6 +39,10 @@
                         <a href="{{ path('admin_user_index') }}"
                            class="nav-link px-0 align-middle {% if app.request.get('_route') == 'admin_user_index' %}active{% endif %}"><i
                                     class="fas fa-user me-2"></i><span class="d-none d-sm-inline">User</span></a>
+                    </li><li class="nav-item">
+                        <a href="{{ path('front_home_index') }}"
+                           class="nav-link px-0 align-middle {% if app.request.get('_route') == 'front_home_index' %}active{% endif %}"><i
+                                    class="fas fa-home me-2"></i><span class="d-none d-sm-inline">Front Home</span></a>
                     </li>
                 </ul>
                 <hr>
