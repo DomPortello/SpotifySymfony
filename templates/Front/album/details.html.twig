@@ -21,17 +21,21 @@
                     <div class="albumArtist">
                         <p><a href="#">Artiste : {{ album.artist.name }}</a></p>
                     </div>
-                    <div class="albumTracks">
+                    <div class="albumTracks container-fluid">
                         <p>Liste des chansons :</p>
-                        {% set id = 1 %}
-                        {% for track in album.tracks %}
-                            <p>{{ id }} - {{ track.title }}</p>
-                            <audio controls src="{{ track.preview }}">
-                                Your browser does not support the
-                                <code>audio</code> element.
-                            </audio>
-                            {% set id = id + 1 %}
-                        {% endfor %}
+                        <div class="row gy-2 align-items-stretch">
+                            {% for track in album.tracks %}
+                            <div class="col-3 d-flex align-items-center">
+                                <div>{{ track.position }} - {{ track.title }}</div>
+                            </div>
+                            <div class="col-9 d-flex align-items-center">
+                                <audio controls src="{{ track.preview }}" class="w-100">
+                                    Your browser does not support the
+                                    <code>audio</code> element.
+                                </audio>
+                            </div>
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
             </div>

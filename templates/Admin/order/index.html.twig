@@ -30,8 +30,11 @@
                             <td>{{ order.status }}</td>
                             <td></td>
                             <td>
-                                <a href="" class="btn btn-primary me-2"><i class="fas fa-eye"></i></a>
-                                <a class="btn btn-primary" href="{{ path('admin_user_index') }}"><i class="fas fa-user"></i></a>
+                                <div class="btn-group">
+                                    <a href="" class="btn btn-primary"><i class="fas fa-eye"></i></a>
+                                    <a class="btn btn-primary" href="{{ path('admin_user_index') }}"><i class="fas fa-user"></i></a>
+                                    <a class="btn btn-success" href="{{ path('admin_order_download', {'id': order.id}) }}"><i class="fas fa-download"></i></a>
+                                </div>
                             </td>
                         </tr>
                     {% endfor %}

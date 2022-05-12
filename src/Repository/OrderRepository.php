@@ -83,6 +83,20 @@ class OrderRepository extends ServiceEntityRepository
             ->getOneOrNullResult();
     }
 
+    public function findOrderByIdWithProducts(int $id): ?Order
+    {
+        return $this->createQueryBuilder('o')
+            ->select('o', 'orderLines', 'album', 'track', 'artist' )
+            ->leftJoin('o.orderLines', 'orderLines')
+            ->leftJoin('orderLines.album', 'album')
+            ->leftJoin('album.artist', 'artist')
+            ->leftJoin('orderLines.track', 'track')
+            ->where('o.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
     public function findByAlpha($orderBy = 'o.endedAt', $order = 'DESC')
     {
         return $this->createQueryBuilder('o')

@@ -1,0 +1,16 @@
+{% for orderLine in orderLines %}
+    <div class="col-12">
+        {% include 'partials/front/_order_line.html.twig' %}
+    </div>
+{% endfor %}
+{% if btnValide %}
+<div class="col-6 text-center">
+    <a href="{{ path('front_order_payment') }}" class="btn btn-success">Valider la Commande</a>
+</div>
+{% endif %}
+<div class="col-3 text-end border-end border-1 border-dark">
+    <span class="me-5">Total Price</span>
+</div>
+<div class="col-1 text-center">
+    <span>{{ total }}</span>
+</div>

@@ -5,10 +5,9 @@
 {% block body %}
     <div class="container my-5">
         <h1 class="my-5">Bienvenue sur Brotify</h1>
-        {% form_theme form 'bootstrap_5_layout.html.twig' %}
-        {{ form_start(form) }}
-        {{ form_end(form) }}
-        <a href="{{ path('front_home_index') }}" class="my-2 btn btn-outline-info text-decoration-none">Revenir à tous les résultats</a>
+{#        {{ form_start(form) }}#}
+{#        {{ form_end(form) }}#}
+{#        <a href="{{ path('front_home_index') }}" class="my-2 btn btn-outline-info text-decoration-none">Revenir à tous les résultats</a>#}
 
         <div class="d-flex justify-content-between">
             <h2 class="mainTitles">{{ 'front.home.albums.title'|trans }}</h2>
